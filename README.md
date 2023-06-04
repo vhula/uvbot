@@ -14,5 +14,11 @@ go install github.com/spf13/cobra-cli@latest
 go install github.com/spf13/cobra-cli@latest && \
 go mod init github.com/vhula/uvbot && \
 cobra-cli init && \
-cobra-cli add version
+cobra-cli add version && \
+go get gopkg.in/telebot.v3
+```
+
+```bash
+read -s TELE_TOKEN
+export TELE_TOKEN
 ```
