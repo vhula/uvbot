@@ -7,6 +7,8 @@ pipeline {
     environment{
         REPO = 'https://github.com/vhula/uvbot'
         BRANCH = 'main'
+        IMAGE_NAME = 'vhula/uvbot'
+        REGISTRY = 'ghcr.io'
     }
     stages {
         stage('clone') {
@@ -23,8 +25,20 @@ pipeline {
         }
         stage('build') {
             steps {
+                echo 'Building binary...'
+                sh 'make build TARGETOS=${params.OS} TARGETARCH=${params.ARCH}'
+            }
+        }
+        stage('image') {
+            steps {
                 echo 'Building docker image...'
-                sh 'make build TARGETOS=$OS TARGETARCH=$ARCH'
+                sh 'make image REGISTRY=$REGISTRY IMAGE_NAME=$IMAGE_NAME TARGETOS=${params.OS} TARGETARCH=${params.ARCH}'
+            }
+        }
+        stage('publish-image') {
+            steps {
+                echo 'Publishing docker image...'
+                sh 'make push REGISTRY=$REGISTRY IMAGE_NAME=$IMAGE_NAME TARGETOS=${params.OS} TARGETARCH=${params.ARCH}'
             }
         }
     }
