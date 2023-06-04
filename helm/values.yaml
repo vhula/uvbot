@@ -2,21 +2,17 @@ replicaCount: 1
 image:
   registry: "ghcr.io"
   repository: vhula/uvbot
-  tag: "0.0.1-5227da6"
+  tag: "v1.0.0-078bc6b"
   os: linux
   arch: amd64
-
 autoscaling:
   enabled: true
   minReplicas: 1
   maxReplicas: 1
-
 pullPolicy: IfNotPresent
-
 secret:
   name: uvbot
   env: TELE_TOKEN
   key: token
-
 securityContext:
   privileged: true
