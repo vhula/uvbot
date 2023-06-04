@@ -1,12 +1,10 @@
 replicaCount: 1
-
 image:
   registry: "ghcr.io"
   repository: vhula/uvbot
-  tag: "0.0.1-8c0e7ff"
+  tag: "0.0.1-5227da6"
   os: linux
   arch: amd64
-
 autoscaling:
   enabled: true
   minReplicas: 1
