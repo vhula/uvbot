@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  registry: "ghcr.io"
+  repository: "vhula/uvbot"
+  tag: "0.0.1-0bc0fb4"
+  os: linux
+  arch: amd64
+secret:
+  name: "uvbot"
+  env: "TELE_TOKEN"
+  key: "token"
+securityContext:
+  privileged: true
