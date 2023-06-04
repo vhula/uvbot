@@ -22,3 +22,9 @@ go get gopkg.in/telebot.v3
 read -s TELE_TOKEN
 export TELE_TOKEN
 ```
+
+Github Container Registry Setup
+```bash
+export CR_PAT=...
+echo $CR_PAT | docker login ghcr.io -u vhula --password-stdin
+```
