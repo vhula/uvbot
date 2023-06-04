@@ -1,11 +1,8 @@
 SHELL := /bin/bash
 
-APP := $(shell basename $(shell git remote get-url origin))
 VERSION := $(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
-REGISTRY := ghcr.io
-NAMESPACE := vhula
 TARGETOS := linux
-TARGETARCH := amd64
+TARGETARCH := arm64
 CGO_ENABLED := 0
 APP_NAME := uvbot
 
@@ -34,11 +31,11 @@ arm:
 	${MAKE} build TARGETOS=${TARGETOS} TARGETARCH=arm
 
 image:
-	docker build . -t ${REGISTRY}/${NAMESPACE}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH} --build-arg CGO_ENABLED=${CGO_ENABLED} --build-arg TARGETARCH=${TARGETARCH} --build-arg TARGETOS=${TARGETOS}
+	docker build . -t ${REGISTRY}:${VERSION}-${TARGETOS}-${TARGETARCH} --build-arg CGO_ENABLED=${CGO_ENABLED} --build-arg TARGETARCH=${TARGETARCH} --build-arg TARGETOS=${TARGETOS}
 
 push:
-	docker push ${REGISTRY}/${NAMESPACE}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
+	docker push ${REGISTRY}:${VERSION}-${TARGETOS}-${TARGETARCH}
 
 clean:
-	docker rmi ${REGISTRY}/${NAMESPACE}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
+	docker rmi ${REGISTRY}:${VERSION}-${TARGETOS}-${TARGETARCH}
 	rm -rf bin

@@ -3,8 +3,9 @@ name: UV Bot Pipeline
 on: push
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: uvbot
+  ARCH: amd64
+  OS: linux
+  REGISTRY: ghcr.io/${{ github.repository }}
 
 jobs:
   ci:
@@ -28,7 +29,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build docker image
-        run: make image
+        run: make image REGISTRY=$REGISTRY TARGETARCH=$ARCH TARGETOS=$OS
 
       - name: Publish docker image
-        run: make push
+        run: make push REGISTRY=$REGISTRY TARGETARCH=$ARCH TARGETOS=$OS
