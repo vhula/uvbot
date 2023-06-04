@@ -1,11 +1,15 @@
 replicaCount: 1
-
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 1
 image:
   registry: "ghcr.io"
   repository: "vhula/uvbot"
   tag: "0.0.1-0bc0fb4"
   os: linux
   arch: amd64
+  pullPolicy: IfNotPresent
 secret:
   name: "uvbot"
   env: "TELE_TOKEN"
