@@ -1,6 +1,9 @@
 name: UV Bot Pipeline
 
-on: push
+on: 
+  push
+    branches:
+      - develop
 
 env:
   ARCH: amd64
