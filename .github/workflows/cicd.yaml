@@ -41,3 +41,6 @@ jobs:
 
       - name: Publish docker image
         run: make push REGISTRY=$REGISTRY IMAGE_NAME=$IMAGE_NAME TARGETARCH=$ARCH TARGETOS=$OS
+      
+      - name: Clean
+        run: make clean
