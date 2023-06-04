@@ -1,0 +1,11 @@
+name: UV Bot Pipeline
+
+on: push
+
+jobs:
+  ci:
+    name: UV Bot CI Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run tests
+        run: make test
