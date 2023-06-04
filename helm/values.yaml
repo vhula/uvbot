@@ -6,7 +6,7 @@ autoscaling:
 image:
   registry: "ghcr.io"
   repository: vhula/uvbot
-  tag: "0.0.1-5d57636"
+  tag: "0.0.1-8c0e7ff"
   os: linux
   arch: amd64
   pullPolicy: IfNotPresent
