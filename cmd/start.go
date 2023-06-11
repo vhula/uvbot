@@ -35,7 +35,7 @@ var startCmd = &cobra.Command{
 			switch payload {
 			case "hello":
 				err = ctx.Send(fmt.Sprintf("Hello. I'm UV Bot %s!", appVersion))
-			case "buy":
+			case "bye":
 				err = ctx.Send(fmt.Sprintf("Goodbye. I'm UV Bot %s!", appVersion))
 			}
 			return err
